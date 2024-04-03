@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "nemos-farming",
+	"version": "${version}",
+	"name": "Nemo's Farming",
+	"description": "Updates the farming life!",
+	"authors": [
+		"NemoNotFound"
+	],
+	"contact": {
+		"homepage": "https://nemonotfound.com/",
+		"sources": "https://github.com/NemoNotFound/Nemos-Farming"
+	},
+	"license": "MIT",
+	"icon": "assets/nemos-farming/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.nemonotfound.NemosFarming"
+		],
+		"fabric-datagen": [
+			"com.nemonotfound.NemosFarmingDataGenerator"
+		]
+	},
+	"mixins": [
+		"nemos-farming.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.9",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+
+	}
+}
