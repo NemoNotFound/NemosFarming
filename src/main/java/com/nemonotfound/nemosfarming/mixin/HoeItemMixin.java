@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,6 +14,9 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
@@ -34,7 +38,8 @@ public class HoeItemMixin extends Item {
         boolean isBlockCropBlock = block instanceof CropBlock;
 
         if (isBlockCropBlock) {
-            boolean hasFarmersKnowledge = EnchantmentHelper.getLevel(ModEnchantments.FARMERS_KNOWLEDGE, hoe) > 0;
+            boolean hasFarmersKnowledge = EnchantmentHelper.getLevel(getEnchantmentRegistryEntry(world,
+                    ModEnchantments.FARMERS_KNOWLEDGE), hoe) > 0;
             boolean isCropRipe = ((CropBlock) block).isMature(state);
 
             if (hasFarmersKnowledge) {
@@ -49,7 +54,8 @@ public class HoeItemMixin extends Item {
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         ItemStack hoe = miner.getMainHandStack();
         boolean isBlockCropBlock = state.getBlock() instanceof CropBlock;
-        boolean hasHoeReaperEnchantment = EnchantmentHelper.getLevel(ModEnchantments.REAPER, hoe) > 0;
+        boolean hasHoeReaperEnchantment = EnchantmentHelper.getLevel(
+                getEnchantmentRegistryEntry(world, ModEnchantments.REAPER), hoe) > 0;
 
         if (isBlockCropBlock && hasHoeReaperEnchantment) {
             for (int i = 0; i < 27; i++) {
@@ -60,6 +66,13 @@ public class HoeItemMixin extends Item {
         }
 
         return super.postMine(stack, world, state, pos, miner);
+    }
+
+    @Unique
+    private RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantmentRegistryKey) {
+        return world.getRegistryManager()
+                .getWrapperOrThrow(RegistryKeys.ENCHANTMENT)
+                .getOrThrow(enchantmentRegistryKey);
     }
 
     @Unique

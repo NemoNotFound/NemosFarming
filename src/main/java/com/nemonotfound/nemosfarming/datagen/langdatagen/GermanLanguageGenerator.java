@@ -7,6 +7,8 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.nemonotfound.nemosfarming.datagen.langdatagen.EnglishLanguageGenerator.getEnchantmentTranslationKey;
+
 public class GermanLanguageGenerator extends FabricLanguageProvider {
 
     public GermanLanguageGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
@@ -15,7 +17,7 @@ public class GermanLanguageGenerator extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add(ModEnchantments.REAPER, "Mäher");
-        translationBuilder.add(ModEnchantments.FARMERS_KNOWLEDGE, "Wissen des Bauern");
+        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REAPER), "Mäher");
+        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.FARMERS_KNOWLEDGE), "Wissen des Bauern");
     }
 }
