@@ -25,7 +25,7 @@ import static com.nemonotfound.nemosfarming.utils.EnchantmentUtils.hasEnchantmen
 @Mixin(Block.class)
 public class BlockMixin {
 
-    @Inject(method = "getDroppedStacks*", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getDroppedStacks(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
     private static void getDroppedStacks(BlockState state, ServerWorld world, BlockPos pos,
                                          @Nullable BlockEntity blockEntity, @Nullable Entity entity, ItemStack stack,
                                             CallbackInfoReturnable<List<ItemStack>> callbackInfoReturnable) {
