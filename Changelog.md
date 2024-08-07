@@ -1,10 +1,8 @@
-# Changelog Snapshot-24w21a
+# Changelog Snapshot-24w32a
 
 ## Additions
-- Added enchantment Reaper for hoes
-  - Destroy crops in a 3x3x3 radius
-- Added enchantment Farmer's Knowledge for hoes
-  - Destroy only mature crops
+- Added enchantment Replanting for hoes
+  - Replant crops
 
 ### Downloads
 [CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-farming) <br>

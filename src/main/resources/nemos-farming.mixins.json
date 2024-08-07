@@ -3,7 +3,8 @@
 	"package": "com.nemonotfound.nemosfarming.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"HoeItemMixin"
+		"HoeItemMixin",
+		"BlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

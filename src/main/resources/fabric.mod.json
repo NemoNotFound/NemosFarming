@@ -25,6 +25,7 @@
 	"mixins": [
 		"nemos-farming.mixins.json"
 	],
+	"accessWidener": "nemos-farming.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.21",

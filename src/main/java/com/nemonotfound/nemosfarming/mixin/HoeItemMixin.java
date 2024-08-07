@@ -6,23 +6,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+
+import static com.nemonotfound.nemosfarming.utils.EnchantmentUtils.hasEnchantment;
 
 @Mixin(HoeItem.class)
 public class HoeItemMixin extends Item {
@@ -38,8 +35,7 @@ public class HoeItemMixin extends Item {
         boolean isBlockCropBlock = block instanceof CropBlock;
 
         if (isBlockCropBlock) {
-            boolean hasFarmersKnowledge = EnchantmentHelper.getLevel(getEnchantmentRegistryEntry(world,
-                    ModEnchantments.FARMERS_KNOWLEDGE), hoe) > 0;
+            boolean hasFarmersKnowledge = hasEnchantment(world, ModEnchantments.FARMERS_KNOWLEDGE, hoe);
             boolean isCropRipe = ((CropBlock) block).isMature(state);
 
             if (hasFarmersKnowledge) {
@@ -54,8 +50,7 @@ public class HoeItemMixin extends Item {
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         ItemStack hoe = miner.getMainHandStack();
         boolean isBlockCropBlock = state.getBlock() instanceof CropBlock;
-        boolean hasHoeReaperEnchantment = EnchantmentHelper.getLevel(
-                getEnchantmentRegistryEntry(world, ModEnchantments.REAPER), hoe) > 0;
+        boolean hasHoeReaperEnchantment = hasEnchantment(world, ModEnchantments.REAPER, hoe);
 
         if (isBlockCropBlock && hasHoeReaperEnchantment) {
             for (int i = 0; i < 27; i++) {
@@ -69,16 +64,9 @@ public class HoeItemMixin extends Item {
     }
 
     @Unique
-    private RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantmentRegistryKey) {
-        return world.getRegistryManager()
-                .getWrapperOrThrow(RegistryKeys.ENCHANTMENT)
-                .getOrThrow(enchantmentRegistryKey);
-    }
-
-    @Unique
     private BlockPos getNextBlockPos(BlockPos pos, int i) {
         int x = (i / 9) - 1;
-        int y = ((i / 3) % 3) -1;
+        int y = ((i / 3) % 3) - 1;
         int z = (i % 3) - 1;
 
         return pos.add(x, y, z);
@@ -96,7 +84,7 @@ public class HoeItemMixin extends Item {
 
     @Unique
     private void breakBlock(World world, BlockState blockState, BlockPos pos, LivingEntity breakingEntity) {
-        FluidState fluidState = world.getFluidState(pos);
+
         if (!(blockState.getBlock() instanceof AbstractFireBlock)) {
             world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(blockState));
         }
@@ -104,11 +92,16 @@ public class HoeItemMixin extends Item {
         BlockEntity blockEntity = blockState.hasBlockEntity() ? world.getBlockEntity(pos) : null;
         Block.dropStacks(blockState, world, pos, blockEntity, breakingEntity, breakingEntity.getMainHandStack());
 
-        boolean blockStateIsSet = world.setBlockState(pos, fluidState.getBlockState(), Block.NOTIFY_ALL, 512);
 
-        if (blockStateIsSet) {
+        if (!hasEnchantment(world, ModEnchantments.REPLANTING, breakingEntity.getMainHandStack()) && setBlockState(world, pos)) {
             world.emitGameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Emitter.of(breakingEntity, blockState));
         }
+    }
 
+    @Unique
+    private boolean setBlockState(World world, BlockPos pos) {
+        FluidState fluidState = world.getFluidState(pos);
+
+        return world.setBlockState(pos, fluidState.getBlockState(), Block.NOTIFY_ALL, 512);
     }
 }

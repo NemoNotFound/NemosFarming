@@ -10,8 +10,7 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.nemonotfound.nemosfarming.enchantment.ModEnchantments.FARMERS_KNOWLEDGE;
-import static com.nemonotfound.nemosfarming.enchantment.ModEnchantments.REAPER;
+import static com.nemonotfound.nemosfarming.enchantment.ModEnchantments.*;
 
 public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
 
@@ -28,6 +27,7 @@ public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
 
         entries.add(FARMERS_KNOWLEDGE, builder.build(FARMERS_KNOWLEDGE.getValue()));
         entries.add(REAPER, builder.build(REAPER.getValue()));
+        entries.add(REPLANTING, builder.build(REPLANTING.getValue()));
     }
 
     @Override

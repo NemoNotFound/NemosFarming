@@ -19,6 +19,7 @@ public class EnglishLanguageGenerator extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REAPER), "Reaper");
         translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.FARMERS_KNOWLEDGE), "Farmer's Knowledge");
+        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REPLANTING), "Replanting");
     }
 
     public static String getEnchantmentTranslationKey(RegistryKey<Enchantment> enchantmentRegistryKey) {
