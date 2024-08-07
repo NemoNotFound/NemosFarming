@@ -54,9 +54,9 @@ public class HoeItemMixin extends Item {
 
         if (isBlockCropBlock && hasHoeReaperEnchantment) {
             for (int i = 0; i < 27; i++) {
-                BlockPos nextPos = getNextBlockPos(pos, i);
+                BlockPos nextPos = nemosFarming_getNextBlockPos(pos, i);
 
-                breakCrop(world, nextPos, miner);
+                nemosFarming_breakCrop(world, nextPos, miner);
             }
         }
 
@@ -64,7 +64,7 @@ public class HoeItemMixin extends Item {
     }
 
     @Unique
-    private BlockPos getNextBlockPos(BlockPos pos, int i) {
+    private BlockPos nemosFarming_getNextBlockPos(BlockPos pos, int i) {
         int x = (i / 9) - 1;
         int y = ((i / 3) % 3) - 1;
         int z = (i % 3) - 1;
@@ -73,17 +73,17 @@ public class HoeItemMixin extends Item {
     }
 
     @Unique
-    private void breakCrop(World world, BlockPos pos, LivingEntity miner) {
+    private void nemosFarming_breakCrop(World world, BlockPos pos, LivingEntity miner) {
         BlockState nextBlockState = world.getBlockState(pos);
         Block nextBlock = nextBlockState.getBlock();
 
         if (nextBlock instanceof CropBlock && canMine(nextBlockState, world, pos, (PlayerEntity) miner)) {
-            breakBlock(world, nextBlockState, pos, miner);
+            nemosFarming_breakBlock(world, nextBlockState, pos, miner);
         }
     }
 
     @Unique
-    private void breakBlock(World world, BlockState blockState, BlockPos pos, LivingEntity breakingEntity) {
+    private void nemosFarming_breakBlock(World world, BlockState blockState, BlockPos pos, LivingEntity breakingEntity) {
 
         if (!(blockState.getBlock() instanceof AbstractFireBlock)) {
             world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(blockState));
@@ -93,13 +93,13 @@ public class HoeItemMixin extends Item {
         Block.dropStacks(blockState, world, pos, blockEntity, breakingEntity, breakingEntity.getMainHandStack());
 
 
-        if (!hasEnchantment(world, ModEnchantments.REPLANTING, breakingEntity.getMainHandStack()) && setBlockState(world, pos)) {
+        if (!hasEnchantment(world, ModEnchantments.REPLANTING, breakingEntity.getMainHandStack()) && nemosFarming_setBlockState(world, pos)) {
             world.emitGameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Emitter.of(breakingEntity, blockState));
         }
     }
 
     @Unique
-    private boolean setBlockState(World world, BlockPos pos) {
+    private boolean nemosFarming_setBlockState(World world, BlockPos pos) {
         FluidState fluidState = world.getFluidState(pos);
 
         return world.setBlockState(pos, fluidState.getBlockState(), Block.NOTIFY_ALL, 512);
