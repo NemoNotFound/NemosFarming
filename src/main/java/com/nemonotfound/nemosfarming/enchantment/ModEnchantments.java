@@ -10,12 +10,11 @@ import static com.nemonotfound.nemosfarming.NemosFarming.log;
 
 public class ModEnchantments {
 
-    public static final RegistryKey<Enchantment> FARMERS_KNOWLEDGE = RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "farmers-knowledge"));
+    public static final RegistryKey<Enchantment> FARMERS_KNOWLEDGE = RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "farmers_knowledge"));
     public static final RegistryKey<Enchantment> REAPER = RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "reaper"));
     public static final RegistryKey<Enchantment> REPLANTING = RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "replanting"));
 
     public static void registerEnchantments() {
         log.info("Register enchantments");
-
     }
 }

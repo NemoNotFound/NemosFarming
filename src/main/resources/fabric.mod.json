@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://nemonotfound.com/",
-		"sources": "https://github.com/NemoNotFound/Nemos-Farming"
+		"sources": "https://github.com/NemoNotFound/NemosFarming"
 	},
 	"license": "MIT",
 	"icon": "assets/nemos-farming/icon.png",
@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.nemonotfound.nemosfarming.NemosFarming"
+		],
+		"client": [
+			"com.nemonotfound.nemosfarming.NemosFarmingClient"
 		],
 		"fabric-datagen": [
 			"com.nemonotfound.nemosfarming.NemosFarmingDataGenerator"

@@ -25,8 +25,13 @@ public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
                                 Enchantment.constantCost(15), Enchantment.constantCost(65),
                                 8, AttributeModifierSlot.MAINHAND));
 
+        Enchantment.Builder reaperEnchantmentBuilder = Enchantment.builder(Enchantment.definition(registries.
+                        getWrapperOrThrow(RegistryKeys.ITEM).getOrThrow(ItemTags.HOES), 2, 3,
+                Enchantment.leveledCost(15, 9), Enchantment.leveledCost(65, 9),
+                4, AttributeModifierSlot.MAINHAND));
+
         entries.add(FARMERS_KNOWLEDGE, builder.build(FARMERS_KNOWLEDGE.getValue()));
-        entries.add(REAPER, builder.build(REAPER.getValue()));
+        entries.add(REAPER, reaperEnchantmentBuilder.build(REAPER.getValue()));
         entries.add(REPLANTING, builder.build(REPLANTING.getValue()));
     }
 

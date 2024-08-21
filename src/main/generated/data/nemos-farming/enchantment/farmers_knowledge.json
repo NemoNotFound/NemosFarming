@@ -1,7 +1,7 @@
 {
   "anvil_cost": 8,
   "description": {
-    "translate": "enchantment.nemos-farming.farmers-knowledge"
+    "translate": "enchantment.nemos-farming.farmers_knowledge"
   },
   "max_cost": {
     "base": 65,

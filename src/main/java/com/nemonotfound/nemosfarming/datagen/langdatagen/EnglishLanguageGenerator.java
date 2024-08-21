@@ -1,6 +1,8 @@
 package com.nemonotfound.nemosfarming.datagen.langdatagen;
 
+import com.nemonotfound.nemosfarming.block.ModBlocks;
 import com.nemonotfound.nemosfarming.enchantment.ModEnchantments;
+import com.nemonotfound.nemosfarming.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.enchantment.Enchantment;
@@ -20,6 +22,17 @@ public class EnglishLanguageGenerator extends FabricLanguageProvider {
         translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REAPER), "Reaper");
         translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.FARMERS_KNOWLEDGE), "Farmer's Knowledge");
         translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REPLANTING), "Replanting");
+        translationBuilder.add(ModBlocks.LETTUCE, "Lettuce");
+        translationBuilder.add(ModItems.LETTUCE, "Lettuce");
+        translationBuilder.add(ModItems.LETTUCE_SEEDS, "Lettuce Seeds");
+        translationBuilder.add(ModBlocks.TOMATO, "Tomato");
+        translationBuilder.add(ModItems.TOMATO, "Tomato");
+        translationBuilder.add(ModItems.TOMATO_SEEDS, "Tomato Seeds");
+        translationBuilder.add(ModItems.CUCUMBER, "Cucumber");
+        translationBuilder.add(ModItems.CUCUMBER_SEEDS, "Cucumber Seeds");
+        translationBuilder.add(ModItems.MIXED_SALAD, "Mixed Salad");
+        translationBuilder.add(ModItems.MIXED_SALAD_WITH_CARROTS, "Mixed Salad with Carrots");
+        translationBuilder.add(ModItems.MIXED_SALAD_WITH_BEETROOT, "Mixed Salad with Beetroot");
     }
 
     public static String getEnchantmentTranslationKey(RegistryKey<Enchantment> enchantmentRegistryKey) {

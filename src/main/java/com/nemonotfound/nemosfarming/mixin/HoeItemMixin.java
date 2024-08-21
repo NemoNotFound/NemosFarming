@@ -19,6 +19,7 @@ import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
+import static com.nemonotfound.nemosfarming.utils.EnchantmentUtils.getEnchantmentLevel;
 import static com.nemonotfound.nemosfarming.utils.EnchantmentUtils.hasEnchantment;
 
 @Mixin(HoeItem.class)
@@ -53,8 +54,11 @@ public class HoeItemMixin extends Item {
         boolean hasHoeReaperEnchantment = hasEnchantment(world, ModEnchantments.REAPER, hoe);
 
         if (isBlockCropBlock && hasHoeReaperEnchantment) {
-            for (int i = 0; i < 27; i++) {
-                BlockPos nextPos = nemosFarming_getNextBlockPos(pos, i);
+            int enchantmentLevel = getEnchantmentLevel(world, ModEnchantments.REAPER, hoe);
+            int breakingRange = 2 * enchantmentLevel + 1;
+
+            for (int i = 0; i < Math.pow(breakingRange, 3); i++) {
+                BlockPos nextPos = nemosFarming_getNextBlockPos(pos, i, breakingRange);
 
                 nemosFarming_breakCrop(world, nextPos, miner);
             }
@@ -64,10 +68,11 @@ public class HoeItemMixin extends Item {
     }
 
     @Unique
-    private BlockPos nemosFarming_getNextBlockPos(BlockPos pos, int i) {
-        int x = (i / 9) - 1;
-        int y = ((i / 3) % 3) - 1;
-        int z = (i % 3) - 1;
+    private BlockPos nemosFarming_getNextBlockPos(BlockPos pos, int i, int breakingRange) {
+        int halfRange = breakingRange / 2;
+        int x = (i / (breakingRange * breakingRange)) - halfRange;
+        int y = ((i / breakingRange) % breakingRange) - halfRange;
+        int z = (i % breakingRange) - halfRange;
 
         return pos.add(x, y, z);
     }

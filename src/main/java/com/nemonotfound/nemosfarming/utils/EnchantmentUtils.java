@@ -18,6 +18,10 @@ public class EnchantmentUtils {
         return EnchantmentHelper.getLevel(getEnchantmentRegistryEntry(world, enchantment), itemStack) > 0;
     }
 
+    public static int getEnchantmentLevel(World world, RegistryKey<Enchantment> enchantment, ItemStack itemStack) {
+        return EnchantmentHelper.getLevel(getEnchantmentRegistryEntry(world, enchantment), itemStack);
+    }
+
     private static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantmentRegistryKey) {
         return world.getRegistryManager()
                 .getWrapperOrThrow(RegistryKeys.ENCHANTMENT)
