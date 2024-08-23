@@ -1,7 +1,7 @@
-# Changelog v1.1
+# Changelog v1.1.1
 
-## Changes
- - Falling on crops won't destroy them while having feather falling
+## Fixes
+ - Non PlayerEntity entities falling on farmland, causes the game to crash
 
 For recipes and more info check the [wiki](https://nemonotfound.com/minecraft-mods/nemos-farming/wiki)
 
