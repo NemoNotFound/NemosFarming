@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "nemos-farming:mixed_salad"
-    }
+    "minecraft:carrot",
+    "nemos-farming:mixed_salad"
   ],
   "result": {
     "count": 1,

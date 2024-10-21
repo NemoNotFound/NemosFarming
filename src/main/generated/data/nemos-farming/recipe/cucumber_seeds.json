@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "nemos-farming:cucumber"
-    }
+    "nemos-farming:cucumber"
   ],
   "result": {
     "count": 2,

@@ -1,36 +1,37 @@
 package com.nemonotfound.nemosfarming.item;
 
 import com.nemonotfound.nemosfarming.block.ModBlocks;
+import com.nemonotfound.nemosfarming.component.type.ModFoodComponents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
+import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
-import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradedItem;
 import net.minecraft.village.VillagerProfession;
+
+import java.util.function.Function;
 
 import static com.nemonotfound.nemosfarming.NemosFarming.MOD_ID;
 import static com.nemonotfound.nemosfarming.NemosFarming.log;
 
 public class ModItems {
 
-    public static final Item LETTUCE = registerItem("lettuce", new Item(new Item.Settings().food(ModFoodComponents.LETTUCE)));
-    public static final Item LETTUCE_SEEDS = registerItem("lettuce_seeds",
-            new AliasedBlockItem(ModBlocks.LETTUCE, new Item.Settings()));
-    public static final Item TOMATO = registerItem("tomato", new Item(new Item.Settings().food(ModFoodComponents.TOMATO)));
-    public static final Item TOMATO_SEEDS = registerItem("tomato_seeds",
-            new AliasedBlockItem(ModBlocks.TOMATO, new Item.Settings()));
-    public static final Item CUCUMBER = registerItem("cucumber", new Item(new Item.Settings().food(ModFoodComponents.CUCUMBER)));
-    public static final Item CUCUMBER_SEEDS = registerItem("cucumber_seeds",
-            new AliasedBlockItem(ModBlocks.CUCUMBER, new Item.Settings()));
-    public static final Item MIXED_SALAD = registerItem("mixed_salad", new Item(new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD)));
-    public static final Item MIXED_SALAD_WITH_CARROTS = registerItem("mixed_salad_with_carrots", new Item(new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_CARROTS)));
-    public static final Item MIXED_SALAD_WITH_BEETROOT = registerItem("mixed_salad_with_beetroot", new Item(new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_BEETROOT)));
+    public static final Item LETTUCE = register("lettuce", new Item.Settings().food(ModFoodComponents.LETTUCE));
+    public static final Item LETTUCE_SEEDS = register("lettuce_seeds", createBlockItemWithUniqueName(ModBlocks.LETTUCE));
+    public static final Item TOMATO = register("tomato", new Item.Settings().food(ModFoodComponents.TOMATO));
+    public static final Item TOMATO_SEEDS = register("tomato_seeds", createBlockItemWithUniqueName(ModBlocks.TOMATO));
+    public static final Item CUCUMBER = register("cucumber", new Item.Settings().food(ModFoodComponents.CUCUMBER));
+    public static final Item CUCUMBER_SEEDS = register("cucumber_seeds", createBlockItemWithUniqueName(ModBlocks.CUCUMBER));
+    public static final Item MIXED_SALAD = register("mixed_salad", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD).useRemainder(Items.BOWL));
+    public static final Item MIXED_SALAD_WITH_CARROTS = register("mixed_salad_with_carrots", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_CARROTS).useRemainder(Items.BOWL));
+    public static final Item MIXED_SALAD_WITH_BEETROOT = register("mixed_salad_with_beetroot", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_BEETROOT).useRemainder(Items.BOWL));
 
     public static void registerItems() {
         log.info("Registering items");
@@ -72,7 +73,19 @@ public class ModItems {
         });
     }
 
-    private static Item registerItem(String path, Item item) {
-        return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, path), item);
+    public static Item register(String id, Item.Settings settings) {
+        return Items.register(keyOf(id), Item::new, settings);
+    }
+
+    public static Item register(String id, Function<Item.Settings, Item> factory) {
+        return Items.register(keyOf(id), factory, new Item.Settings());
+    }
+
+    private static RegistryKey<Item> keyOf(String id) {
+        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, id));
+    }
+
+    private static Function<Item.Settings, Item> createBlockItemWithUniqueName(Block block) {
+        return settings -> new BlockItem(block, settings.useItemPrefixedTranslationKey());
     }
 }

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "nemos-farming:mixed_salad"
-    }
+    "minecraft:beetroot",
+    "nemos-farming:mixed_salad"
   ],
   "result": {
     "count": 1,

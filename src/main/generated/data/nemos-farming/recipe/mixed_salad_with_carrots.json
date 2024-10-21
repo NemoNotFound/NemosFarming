@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "nemos-farming:tomato"
-    },
-    {
-      "item": "nemos-farming:lettuce"
-    },
-    {
-      "item": "nemos-farming:cucumber"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:bowl"
-    }
+    "nemos-farming:tomato",
+    "nemos-farming:lettuce",
+    "nemos-farming:cucumber",
+    "minecraft:carrot",
+    "minecraft:bowl"
   ],
   "result": {
     "count": 1,

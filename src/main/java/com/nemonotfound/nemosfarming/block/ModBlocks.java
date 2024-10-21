@@ -3,27 +3,33 @@ package com.nemonotfound.nemosfarming.block;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+
+import java.util.function.Function;
 
 import static com.nemonotfound.nemosfarming.NemosFarming.MOD_ID;
 import static com.nemonotfound.nemosfarming.NemosFarming.log;
 
 public class ModBlocks {
 
-    public static final Block LETTUCE = registerBlock("lettuce",
-            new LettuceCropBlock(AbstractBlock.Settings.copy(Blocks.WHEAT)));
-    public static final Block TOMATO = registerBlock("tomato",
-            new TomatoCropBlock(AbstractBlock.Settings.copy(Blocks.WHEAT)));
-    public static final Block CUCUMBER = registerBlock("cucumber",
-            new CucumberCropBlock(AbstractBlock.Settings.copy(Blocks.WHEAT)));
+    public static final Block LETTUCE = register("lettuce",
+            LettuceCropBlock::new, AbstractBlock.Settings.copy(Blocks.CARROTS));
+    public static final Block TOMATO = register("tomato",
+            TomatoCropBlock::new, AbstractBlock.Settings.copy(Blocks.CARROTS));
+    public static final Block CUCUMBER = register("cucumber",
+            CucumberCropBlock::new, AbstractBlock.Settings.copy(Blocks.CARROTS));
 
     public static void registerBlocks() {
         log.info("Registering blocks");
     }
 
-    private static Block registerBlock(String path, Block block) {
-        return Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, path), block);
+    private static RegistryKey<Block> keyOf(String id) {
+        return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(MOD_ID, id));
+    }
+
+    private static Block register(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        return Blocks.register(keyOf(id), factory, settings);
     }
 }

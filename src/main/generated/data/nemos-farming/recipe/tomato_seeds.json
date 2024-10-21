@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "nemos-farming:tomato"
-    }
+    "nemos-farming:tomato"
   ],
   "result": {
     "count": 2,

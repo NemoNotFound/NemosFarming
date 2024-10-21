@@ -53,7 +53,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nemos-farming:mixed_salad_with_beetroot_2"
+        "recipe": "minecraft:mixed_salad_with_beetroot_2"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -81,7 +81,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nemos-farming:mixed_salad_with_beetroot_2"
+      "minecraft:mixed_salad_with_beetroot_2"
     ]
   }
 }

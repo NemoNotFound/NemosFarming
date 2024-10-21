@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "nemos-farming:lettuce"
-    }
+    "nemos-farming:lettuce"
   ],
   "result": {
     "count": 2,
