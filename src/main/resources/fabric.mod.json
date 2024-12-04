@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.nemonotfound.nemosfarming.NemosFarming"
+			"com.nemonotfound.nemos.farming.NemosFarming"
 		],
 		"client": [
-			"com.nemonotfound.nemosfarming.NemosFarmingClient"
+			"com.nemonotfound.nemos.farming.NemosFarmingClient"
 		],
 		"fabric-datagen": [
-			"com.nemonotfound.nemosfarming.NemosFarmingDataGenerator"
+			"com.nemonotfound.nemos.farming.NemosFarmingDataGenerator"
 		]
 	},
 	"mixins": [
@@ -30,10 +30,9 @@
 	],
 	"accessWidener": "nemos-farming.accesswidener",
 	"depends": {
-		"fabricloader": ">=0.16.7",
+		"fabricloader": ">=0.16.9",
 		"minecraft": [
-			"~1.21.3",
-			"~1.21.2"
+			"~1.21.4"
 		],
 		"java": ">=21",
 		"fabric-api": "*"
