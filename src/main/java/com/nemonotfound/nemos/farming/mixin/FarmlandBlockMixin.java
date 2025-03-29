@@ -8,6 +8,7 @@ import com.nemonotfound.nemos.farming.utils.EnchantmentUtils;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.ItemTags;
@@ -20,16 +21,14 @@ public class FarmlandBlockMixin {
 
     @Definition(id = "random", field = "Lnet/minecraft/world/World;random:Lnet/minecraft/util/math/random/Random;")
     @Definition(id = "nextFloat", method = "Lnet/minecraft/util/math/random/Random;nextFloat()F")
-    @Expression("?.random.nextFloat() < ? - 0.5")
+    @Expression("((double) ?.random.nextFloat()) < ? - 0.5")
     @ModifyExpressionValue(method = "onLandedUpon", at = @At("MIXINEXTRAS:EXPRESSION"))
     private boolean onLandedUpon(boolean original, @Local(argsOnly = true) Entity entity, @Local(argsOnly = true) World world) {
         if (original && entity instanceof PlayerEntity player) {
-            Iterable<ItemStack> armorStacks = player.getAllArmorItems();
+            ItemStack boots = player.getEquippedStack(EquipmentSlot.FEET);
 
-            for (ItemStack armorStack : armorStacks) {
-                if (armorStack.isIn(ItemTags.FOOT_ARMOR)) {
-                    return !EnchantmentUtils.hasEnchantment(world, Enchantments.FEATHER_FALLING, armorStack);
-                }
+            if (boots.isIn(ItemTags.FOOT_ARMOR)) {
+                return !EnchantmentUtils.hasEnchantment(world, Enchantments.FEATHER_FALLING, boots);
             }
         }
 

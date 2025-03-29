@@ -30,8 +30,12 @@ public class HoeItemMixin extends Item {
     }
 
     @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        ItemStack hoe = miner.getMainHandStack();
+    public boolean canMine(ItemStack itemStack, BlockState state, World world, BlockPos pos, LivingEntity user) {
+        if (!(user instanceof PlayerEntity)) {
+            return super.canMine(itemStack, state, world, pos, user);
+        }
+
+        ItemStack hoe = user.getMainHandStack();
         Block block = state.getBlock();
         boolean isBlockCropBlock = block instanceof CropBlock;
 
@@ -40,7 +44,7 @@ public class HoeItemMixin extends Item {
             boolean isCropRipe = ((CropBlock) block).isMature(state);
 
             if (hasFarmersKnowledge) {
-                return miner.isCreative() || isCropRipe;
+                return ((PlayerEntity) user).isCreative() || isCropRipe;
             }
         }
 
@@ -78,12 +82,16 @@ public class HoeItemMixin extends Item {
     }
 
     @Unique
-    private void nemosFarming_breakCrop(World world, BlockPos pos, LivingEntity miner) {
+    private void nemosFarming_breakCrop(World world, BlockPos pos, LivingEntity user) {
+        if (!(user instanceof PlayerEntity)) {
+            return;
+        }
+
         BlockState nextBlockState = world.getBlockState(pos);
         Block nextBlock = nextBlockState.getBlock();
 
-        if (nextBlock instanceof CropBlock && canMine(nextBlockState, world, pos, (PlayerEntity) miner)) {
-            nemosFarming_breakBlock(world, nextBlockState, pos, miner);
+        if (nextBlock instanceof CropBlock && canMine(user.getMainHandStack(), nextBlockState, world, pos, user)) {
+            nemosFarming_breakBlock(world, nextBlockState, pos, user);
         }
     }
 
