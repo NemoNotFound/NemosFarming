@@ -21,5 +21,10 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.TOMATO_SEEDS)
                 .add(ModItems.CUCUMBER_SEEDS)
                 .add(ModItems.LETTUCE_SEEDS);
+
+        getOrCreateTagBuilder(ItemTags.CHICKEN_FOOD)
+                .add(ModItems.TOMATO_SEEDS)
+                .add(ModItems.CUCUMBER_SEEDS)
+                .add(ModItems.LETTUCE_SEEDS);
     }
 }

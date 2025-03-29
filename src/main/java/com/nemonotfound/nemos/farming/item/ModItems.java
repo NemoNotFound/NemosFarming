@@ -2,19 +2,25 @@ package com.nemonotfound.nemos.farming.item;
 
 import com.nemonotfound.nemos.farming.block.ModBlocks;
 import com.nemonotfound.nemos.farming.component.type.ModFoodComponents;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradedItem;
+import net.minecraft.village.VillagerProfession;
 
 import java.util.function.Function;
 
 import static com.nemonotfound.nemos.farming.NemosFarming.MOD_ID;
 import static com.nemonotfound.nemos.farming.NemosFarming.log;
+import static net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL;
 
 public class ModItems {
 
@@ -45,27 +51,27 @@ public class ModItems {
     }
 
     private static void addItemsToVillagerTrades() {
-//        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 1, factories -> {
-//            factories.add((entity, random) -> new TradeOffer(new TradedItem(LETTUCE, 24),
-//                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
-//
-//            factories.add((entity, random) -> new TradeOffer(new TradedItem(TOMATO, 24),
-//                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
-//
-//            factories.add((entity, random) -> new TradeOffer(new TradedItem(CUCUMBER, 24),
-//                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
-//        });
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 1, factories -> {
+            factories.add((entity, random) -> new TradeOffer(new TradedItem(LETTUCE, 24),
+                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
 
-//        TradeOfferHelper.registerWanderingTraderOffers(factories -> {
-//            factories.addOffersToPool((entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
-//                    new ItemStack(LETTUCE_SEEDS, 1), 12, 1, 0.05f));
-//
-//            factories.add((entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
-//                    new ItemStack(TOMATO_SEEDS, 1), 12, 1, 0.05f));
-//
-//            factories.add((entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
-//                    new ItemStack(CUCUMBER_SEEDS, 1), 12, 1, 0.05f));
-//        });
+            factories.add((entity, random) -> new TradeOffer(new TradedItem(TOMATO, 24),
+                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
+
+            factories.add((entity, random) -> new TradeOffer(new TradedItem(CUCUMBER, 24),
+                    new ItemStack(Items.EMERALD, 1), 16, 2, 0.05f));
+        });
+
+        TradeOfferHelper.registerWanderingTraderOffers(factories -> {
+            factories.addOffersToPool(SELL_COMMON_ITEMS_POOL, (entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
+                    new ItemStack(LETTUCE_SEEDS, 1), 12, 1, 0.05f));
+
+            factories.addOffersToPool(SELL_COMMON_ITEMS_POOL, (entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
+                    new ItemStack(TOMATO_SEEDS, 1), 12, 1, 0.05f));
+
+            factories.addOffersToPool(SELL_COMMON_ITEMS_POOL, (entity, random) -> new TradeOffer(new TradedItem(Items.EMERALD, 1),
+                    new ItemStack(CUCUMBER_SEEDS, 1), 12, 1, 0.05f));
+        });
     }
 
     public static Item register(String id, Item.Settings settings) {

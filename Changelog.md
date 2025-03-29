@@ -1,10 +1,10 @@
-# Changelog v1.1.1
+# Changelog v2.0
 
-## Fixes
- - Non PlayerEntity entities falling on farmland, causes the game to crash
+# Removals
+- Removed Reaper enchantment (moved to Nemo's Enchantments)
+- Removed Farmer's Knowledge enchantment (moved to Nemo's Enchantments)
+- Removed Replanting enchantment (moved to Nemo's Enchantments)
 
-For recipes and more info check the [wiki](https://nemonotfound.com/minecraft-mods/nemos-farming/wiki)
-
-### Downloads
-[CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-farming) <br>
-[Modrinth](https://modrinth.com/mod/nemos-farming)
+## Changes
+- Updated cucumber item texture
+- Cucumber, tomato and lettuce seeds now can be fed to chicken

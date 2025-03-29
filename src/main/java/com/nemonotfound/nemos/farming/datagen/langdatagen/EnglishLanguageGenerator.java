@@ -1,7 +1,6 @@
 package com.nemonotfound.nemos.farming.datagen.langdatagen;
 
 import com.nemonotfound.nemos.farming.block.ModBlocks;
-import com.nemonotfound.nemos.farming.enchantment.ModEnchantments;
 import com.nemonotfound.nemos.farming.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -19,9 +18,6 @@ public class EnglishLanguageGenerator extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REAPER), "Reaper");
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.FARMERS_KNOWLEDGE), "Farmer's Knowledge");
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REPLANTING), "Replanting");
         translationBuilder.add(ModBlocks.LETTUCE, "Lettuce");
         translationBuilder.add(ModItems.LETTUCE, "Lettuce");
         translationBuilder.add(ModItems.LETTUCE_SEEDS, "Lettuce Seeds");

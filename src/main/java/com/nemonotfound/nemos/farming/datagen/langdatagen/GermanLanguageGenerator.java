@@ -1,15 +1,12 @@
 package com.nemonotfound.nemos.farming.datagen.langdatagen;
 
 import com.nemonotfound.nemos.farming.block.ModBlocks;
-import com.nemonotfound.nemos.farming.enchantment.ModEnchantments;
 import com.nemonotfound.nemos.farming.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
-
-import static com.nemonotfound.nemos.farming.datagen.langdatagen.EnglishLanguageGenerator.getEnchantmentTranslationKey;
 
 public class GermanLanguageGenerator extends FabricLanguageProvider {
 
@@ -19,9 +16,6 @@ public class GermanLanguageGenerator extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REAPER), "Mäher");
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.FARMERS_KNOWLEDGE), "Wissen des Bauern");
-        translationBuilder.add(getEnchantmentTranslationKey(ModEnchantments.REPLANTING), "Wiederbepflanzung");
         translationBuilder.add(ModBlocks.LETTUCE, "Kopfsalat");
         translationBuilder.add(ModItems.LETTUCE, "Kopfsalat");
         translationBuilder.add(ModItems.LETTUCE_SEEDS, "Kopfsalatsamen");
