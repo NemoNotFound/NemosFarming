@@ -33,6 +33,8 @@ public class ModItems {
     public static final Item MIXED_SALAD = register("mixed_salad", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD).useRemainder(Items.BOWL));
     public static final Item MIXED_SALAD_WITH_CARROTS = register("mixed_salad_with_carrots", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_CARROTS).useRemainder(Items.BOWL));
     public static final Item MIXED_SALAD_WITH_BEETROOT = register("mixed_salad_with_beetroot", new Item.Settings().maxCount(1).food(ModFoodComponents.MIXED_SALAD_WITH_BEETROOT).useRemainder(Items.BOWL));
+    //TODO: createBlockItemWithUniqueName
+    public static final Item RED_GRAPES = register("red_grapes",  new Item.Settings().food(ModFoodComponents.GRAPES));
 
     public static void registerItems() {
         log.info("Registering items");

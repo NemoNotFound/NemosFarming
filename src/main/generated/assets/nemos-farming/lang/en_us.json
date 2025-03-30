@@ -1,9 +1,6 @@
 {
   "block.nemos-farming.lettuce": "Lettuce",
   "block.nemos-farming.tomato": "Tomato",
-  "enchantment.nemos-farming.farmers_knowledge": "Farmer's Knowledge",
-  "enchantment.nemos-farming.reaper": "Reaper",
-  "enchantment.nemos-farming.replanting": "Replanting",
   "item.nemos-farming.cucumber": "Cucumber",
   "item.nemos-farming.cucumber_seeds": "Cucumber Seeds",
   "item.nemos-farming.lettuce": "Lettuce",
@@ -11,6 +8,7 @@
   "item.nemos-farming.mixed_salad": "Mixed Salad",
   "item.nemos-farming.mixed_salad_with_beetroot": "Mixed Salad with Beetroot",
   "item.nemos-farming.mixed_salad_with_carrots": "Mixed Salad with Carrots",
+  "item.nemos-farming.red_grapes": "Red Grapes",
   "item.nemos-farming.tomato": "Tomato",
   "item.nemos-farming.tomato_seeds": "Tomato Seeds"
 }

@@ -1,9 +1,6 @@
 {
   "block.nemos-farming.lettuce": "Kopfsalat",
   "block.nemos-farming.tomato": "Tomate",
-  "enchantment.nemos-farming.farmers_knowledge": "Wissen des Bauern",
-  "enchantment.nemos-farming.reaper": "Mäher",
-  "enchantment.nemos-farming.replanting": "Wiederbepflanzung",
   "item.nemos-farming.cucumber": "Gurke",
   "item.nemos-farming.cucumber_seeds": "Gurkensamen",
   "item.nemos-farming.lettuce": "Kopfsalat",
@@ -11,6 +8,7 @@
   "item.nemos-farming.mixed_salad": "Gemischter Salat",
   "item.nemos-farming.mixed_salad_with_beetroot": "Gemischter Salat mit roter Bete",
   "item.nemos-farming.mixed_salad_with_carrots": "Gemischter Salat mit Karotten",
+  "item.nemos-farming.red_grapes": "Rote Weintrauben",
   "item.nemos-farming.tomato": "Tomate",
   "item.nemos-farming.tomato_seeds": "Tomatensamen"
 }

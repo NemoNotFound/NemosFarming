@@ -32,5 +32,6 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MIXED_SALAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.MIXED_SALAD_WITH_CARROTS, Models.GENERATED);
         itemModelGenerator.register(ModItems.MIXED_SALAD_WITH_BEETROOT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RED_GRAPES, Models.GENERATED);
     }
 }

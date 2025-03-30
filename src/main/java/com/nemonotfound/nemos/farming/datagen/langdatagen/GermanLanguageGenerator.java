@@ -27,5 +27,6 @@ public class GermanLanguageGenerator extends FabricLanguageProvider {
         translationBuilder.add(ModItems.MIXED_SALAD, "Gemischter Salat");
         translationBuilder.add(ModItems.MIXED_SALAD_WITH_CARROTS, "Gemischter Salat mit Karotten");
         translationBuilder.add(ModItems.MIXED_SALAD_WITH_BEETROOT, "Gemischter Salat mit roter Bete");
+        translationBuilder.add(ModItems.RED_GRAPES, "Rote Weintrauben");
     }
 }
