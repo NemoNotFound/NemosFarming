@@ -1,21 +1,7 @@
-![Nemo's Farming](https://github.com/NemoNotFound/NemoNotFound/blob/master/resources/minecraft_projects/titles/png/nemos_farming.png?raw=true)
-<br><br>
-
-# Description
-**Nemo's Farming** adds new crops and food to Minecraft!  
-Expand your farm and discover new ingredients.
-
-For more information check the [wiki](https://github.com/NemoNotFound/NemosFarming/wiki).
-<br><br>
-
-# Downloads
-- [CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-farming)
-- [Modrinth](https://modrinth.com/mod/nemos-farming)
-<br><br>
-
 # Join my Discord!
 [![Join my Discord](https://github.com/NemoNotFound/NemoNotFound/blob/master/resources/svg/join_discord_button.svg?raw=true)](https://discord.com/invite/yxs9dga)
-<br><br>
+<br>
+<br>
 
 # Support Me
 I love to create mods for Minecraft and wish to live off it one day, so I hope you like what I do. <br>
@@ -23,7 +9,8 @@ Either way feel free to give me your feedback and suggestions, either on my Disc
 <br><br>
 
 [![ko-fi donation](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/nemonotfound)
-<br><br>
+<br>
+<br>
 
 # Get a Minecraft Server
 Looking for a Minecraft Server? Check out [BisectHosting](https://bisecthosting.com/Nemo404)! <br>
